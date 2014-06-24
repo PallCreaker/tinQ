@@ -14,15 +14,15 @@ default: &default
 
 development:
   <<: *default
-  database: QynQyn_dev
+  database: qynqyn_dev
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: QynQyn_test
+  database: qynqyn_test
 
 production:
   <<: *default
-  database: QynQyn_production
+  database: qynqyn_production
