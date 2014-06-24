@@ -29,9 +29,6 @@ gem 'rails_admin', '~> 0.6.2'
 gem 'devise', '~> 3.2.4'
 gem 'cancancan', '~> 1.8.2'
 
-# form helper
-gem 'enum_help', '~> 0.0.6'
-
 group :test, :development do
   gem 'rspec-rails'
 end

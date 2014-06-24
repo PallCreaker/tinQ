@@ -46,7 +46,6 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
-    enum_help (0.0.6)
     erubis (2.7.0)
     execjs (2.2.0)
     factory_girl (4.4.0)
@@ -191,7 +190,6 @@ DEPENDENCIES
   cancancan (~> 1.8.2)
   coffee-rails (~> 4.0.0)
   devise (~> 3.2.4)
-  enum_help (~> 0.0.6)
   factory_girl_rails
   jbuilder (~> 2.0)
   jquery-rails
