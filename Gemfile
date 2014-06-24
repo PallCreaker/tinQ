@@ -32,10 +32,6 @@ gem 'cancancan', '~> 1.8.2'
 # form helper
 gem 'enum_help', '~> 0.0.6'
 
-
-# Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-gem 'spring',        group: :development
-
 group :test, :development do
   gem 'rspec-rails'
 end
