@@ -14,3 +14,15 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+# Ignore database configuration
+/config/database.yml
+
+# for Macs
+.DS_Store
+
+# for vim
+.swp
+
+/vendor/bundle
+/bin/*
