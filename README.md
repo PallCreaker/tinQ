@@ -7,6 +7,9 @@
 + DB:(RDS)MySQL
 + Webサーバ: Nginx+Unicorn
 
+### 簡単な仕様
++ web + スマホ最適化
++ sassは [fundation](http://foundation.zurb.com/)使います 
 
 ### Project Information  
 + [資料]作成中  

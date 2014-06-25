@@ -25,8 +25,9 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 
 gem 'rails_admin', '~> 0.6.2'
 
-# User Authorization
 gem 'devise', '~> 3.2.4'
+
+gem 'zurb-foundation', '~> 4.3.2'
 
 group :test, :development do
   gem 'rspec-rails'
