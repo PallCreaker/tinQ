@@ -27,7 +27,6 @@ gem 'rails_admin', '~> 0.6.2'
 
 # User Authorization
 gem 'devise', '~> 3.2.4'
-gem 'cancancan', '~> 1.8.2'
 
 group :test, :development do
   gem 'rspec-rails'
