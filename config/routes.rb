@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :qynqyns
+
   resources :categories
 
   resources :posts

@@ -1,0 +1,2 @@
+module QynqynsHelper
+end
