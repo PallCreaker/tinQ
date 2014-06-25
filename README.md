@@ -13,7 +13,8 @@
 
 ### Project Information  
 + [資料]作成中  
-+ [Cacoo設計図]=>作成中()  
++ [Cacoo設計図](https://cacoo.com/diagrams/Z1HmXoD9dpMzRTLd)
+←メール下さい。招待します  
 + [参考サイト-Zidory-](http://zidory.me/wanted/)  
 + コミュニケーション=>[Slack](https://matsuri.slack.com/)  
 + プロジェクト管理,コード管理=>GitHub & GitHub issuesで全部やる  
