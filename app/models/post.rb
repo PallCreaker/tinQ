@@ -4,4 +4,5 @@ class Post < ActiveRecord::Base
 
   has_one :qynqyn
   has_many :products
+  has_and_belongs_to_many :categorys
 end

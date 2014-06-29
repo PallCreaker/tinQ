@@ -1,3 +1,3 @@
 class Category < ActiveRecord::Base
-  # TODO:　ここは、postと多対多 そのあと、migrate
+  has_and_belongs_to_many :posts
 end
