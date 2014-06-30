@@ -27,14 +27,16 @@ ActiveRecord::Schema.define(version: 20140630090615) do
 
   create_table "posts", force: true do |t|
     t.string   "content"
-    t.datetime "created_at"
-    t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "category_id"
-    t.integer  "item_id"
+    t.integer  "product_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "products", force: true do |t|
+    t.string   "good_name"
+    t.integer  "brand_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
