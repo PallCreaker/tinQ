@@ -1,8 +1,9 @@
 class Post < ActiveRecord::Base
-  belongs_to :users
+  belongs_to :user
   scope :latest ,order('update_at desc')
 
   has_one :qynqyn
   has_many :products
-  has_and_belongs_to_many :categorys
+  has_many :categorys
+  has_many :brands
 end
