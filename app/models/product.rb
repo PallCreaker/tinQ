@@ -1,3 +1,3 @@
 class Product < ActiveRecord::Base
-  # TODO:　ここは、postと多対多
+  has_many :brands
 end
