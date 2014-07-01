@@ -5,6 +5,10 @@ class UsersController < ApplicationController
   def show
   end
 
+  def new
+    @user = User.new()
+  end
+
   private
   def correct_user
     @user = User.find(params[:id])
