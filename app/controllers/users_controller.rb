@@ -5,9 +5,10 @@ class UsersController < ApplicationController
   def show
   end
 
-  def new
-    @user = User.new()
-  end
+  #いらないかもしれない
+  #def new
+    #@user = User.new()
+  #end
 
   private
   def correct_user
