@@ -9,7 +9,9 @@ Rails.application.routes.draw do
 
   resources :posts
 
-  resources :users, only: [:index, :show]
+  #resources :users, only: [:index, :show]
+  get 'users/index'
+  get 'users/show'
 
   devise_for :users, controllers: {
     sessions:      "users/sessions",
