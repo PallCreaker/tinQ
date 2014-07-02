@@ -9,7 +9,6 @@ Rails.application.routes.draw do
 
   resources :posts
 
-  #resources :users, only: [:index, :show]
   get 'users/index'
   get 'users/show'
 
