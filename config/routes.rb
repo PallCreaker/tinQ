@@ -9,8 +9,8 @@ Rails.application.routes.draw do
 
   resources :posts
 
-  get 'users/index'
-  get 'users/show'
+  get '/users' => "users#index", as: :user
+  get "/user/:name" => "users#show", as: :user
 
   devise_for :users, controllers: {
     sessions:      "users/sessions",
