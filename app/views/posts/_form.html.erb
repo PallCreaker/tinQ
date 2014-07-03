@@ -12,6 +12,12 @@
   <% end %>
 
   <div class="field">
+    <p>商品を投稿しましょう</p>
+    category
+    <%= f.collection_select :category_id, @categories, :id, :name %> <br>
+
+    goods
+    <%= f.collection_select :product_id, @products, :id, :goods_name %> <br>
     <%= f.label :content %><br>
     <%= f.text_field :content %>
   </div>

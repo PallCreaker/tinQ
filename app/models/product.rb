@@ -1,3 +1,4 @@
 class Product < ActiveRecord::Base
-  has_many :brands
+  belongs_to :brand
+  has_many :posts
 end

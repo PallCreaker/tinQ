@@ -11,6 +11,12 @@
     </div>
   <% end %>
 
+  <div class="field">
+    <%= f.label :brand_id %><br>
+    <%= f.collection_select :brand_id, @brands, :id, :name %> <br><br>
+    <%= f.label :goods_name %><br>
+    <%= f.text_field :goods_name %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>
