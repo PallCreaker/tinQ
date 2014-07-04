@@ -18,11 +18,11 @@
 
     goods
     <%= f.collection_select :product_id, @products, :id, :goods_name %> <br>
-    <%= f.label :content %><br>
+    <%= f.label :content %>
     <%= f.text_field :content %>
+    <br>
 
-    <%# image_tag @posts.photo.url if @posts.photo.present? %>  
-    <%= f.label :photo %><br />
+    <%= f.label :photo %>
     <%= f.file_field :photo %>
   </div>
   <div class="actions">
