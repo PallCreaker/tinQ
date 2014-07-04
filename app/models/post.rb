@@ -4,6 +4,7 @@ class Post < ActiveRecord::Base
   belongs_to :product
   belongs_to :category
 
+  default_scope { where('is_deleted != 1')}
   scope :latest, -> { order('update_at desc') }
 
   # validation
