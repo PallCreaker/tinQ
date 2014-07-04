@@ -15,7 +15,8 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     sessions:      "users/sessions",
     registrations: "users/registrations",
-    passwords:     "users/passwords"
+    passwords:     "users/passwords",
+    omniauth_callbacks: "users/omniauth_callbacks" 
   }
 
   # The priority is based upon order of creation: first created -> highest priority.

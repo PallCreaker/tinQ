@@ -254,14 +254,14 @@ Devise.setup do |config|
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
 
-  api_key = 'XGDeuYmnRWS9HBIGctUvM5wXO'
-  api_secret = 'lV7uUgt2UuzItCUBAjk2ErwPIkiieSKFskfbkt44KNDeW7DC4l'
+  key = 'aaoJ61RlQPPgSK1r1RtKid9Wn'
+  secret = '5Vv42CFG5or0MeKSDlvSpuNWRWdZmoNO1WORZQDSYWgL9heOiJ'
 
 # API key
   if Rails.env.production?
-    config.omniauth :twitter,  api_key, api_secret
+    config.omniauth :twitter,  key, secret
   else
-    config.omniauth :twitter,  api_key, api_secret
+    config.omniauth :twitter,  key, secret
   end
 
 end
