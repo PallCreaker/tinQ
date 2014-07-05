@@ -6,6 +6,20 @@ class User < ActiveRecord::Base
 
   has_many :posts
 
+  def self.find_for_twitter_oauth(auth, signed_in_resource=nil)
+    user = User.where(:provider => auth.provider, :uid => auth.uid).first
+    unless user
+      user = User.create(name:     auth.info.nickname,
+                         provider: auth.provider,
+                         uid:      auth.uid,
+                         email:    User.create_unique_email,
+                         password: Devise.friendly_token[0,20]
+                        )
+    end
+    user
+  end
+
+  # 通常サインアップ時のuid用、Twitter OAuth認証時のemail用にuuidな文字列を生成
   def self.create_unique_string
     SecureRandom.uuid
   end
