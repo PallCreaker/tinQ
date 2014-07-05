@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :fetch_product_data, only: [:create, :new]
 
   # GET /posts
   # GET /posts.json
@@ -15,8 +16,6 @@ class PostsController < ApplicationController
   # GET /posts/new
   def new
     @post = Post.new
-    @categories = Category.all
-    @products = Product.all
   end
 
   # GET /posts/1/edit
@@ -33,8 +32,6 @@ class PostsController < ApplicationController
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
         format.json { render :show, status: :created, location: @post }
       else
-        @categories = Category.all
-        @products = Product.all
         format.html { render :new }
         format.json { render json: @post.errors, status: :unprocessable_entity }
       end
@@ -69,6 +66,11 @@ class PostsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_post
       @post = Post.find(params[:id])
+    end
+
+    def fetch_product_data
+      @categories = Category.all
+      @products = Product.all
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
