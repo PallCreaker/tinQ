@@ -1,3 +1,5 @@
 class Category < ActiveRecord::Base
-  belongs_to :post
+  has_many :posts
+
+  validates :name, presence: { message: 'なにか入力して下さい'}
 end

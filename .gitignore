@@ -27,3 +27,6 @@
 /vendor/bundle
 /bin/*
 .ruby-version
+
+# s3のアクセスキー
+config/s3.yml

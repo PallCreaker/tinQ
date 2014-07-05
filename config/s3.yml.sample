@@ -1,0 +1,4 @@
+bucket: image-upload
+access_key_id: IAMで作成したユーザのkey_id
+secret_access_key: IAMで作成したユーザのaccess_key
+s3_host_name: s3-ap-northeast-1.amazonaws.com

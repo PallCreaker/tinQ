@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :fetch_product_data, only: [:create, :new]
 
   # GET /posts
   # GET /posts.json
@@ -25,7 +26,7 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = Post.new(post_params)
-
+    @post.user_id = current_user.id
     respond_to do |format|
       if @post.save
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
@@ -67,8 +68,13 @@ class PostsController < ApplicationController
       @post = Post.find(params[:id])
     end
 
+    def fetch_product_data
+      @categories = Category.all
+      @products = Product.all
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:content)
+      params.require(:post).permit(:content, :product_id, :category_id, :photo)
     end
 end
