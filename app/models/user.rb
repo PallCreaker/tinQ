@@ -5,11 +5,12 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   has_many :posts
+  validates :name, presence: true, length: { maximum: 30 }
 
   def self.find_for_twitter_oauth(auth, signed_in_resource=nil)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
     unless user
-      user = User.create(tw_name:     auth.info.nickname,
+      user = User.create(name:     auth.info.nickname,
                          provider: auth.provider,
                          uid:      auth.uid,
                          email:    User.create_unique_email,
