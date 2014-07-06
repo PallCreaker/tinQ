@@ -57,3 +57,4 @@ end
 
 gem 'omniauth'
 gem 'omniauth-twitter'
+gem 'twitter'

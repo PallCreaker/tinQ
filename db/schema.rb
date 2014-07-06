@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 20140703150744) do
     t.string   "name"
     t.string   "uid",                    default: "", null: false
     t.string   "provider",               default: "", null: false
+    t.string   "tw_name"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

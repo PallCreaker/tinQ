@@ -23,4 +23,9 @@ class User < ActiveRecord::Base
   def self.create_unique_string
     SecureRandom.uuid
   end
+
+  # twitterではemailを取得できないので、適当に一意のemailを生成
+  def self.create_unique_email
+    User.create_unique_string + "@example.com"
+  end
 end
