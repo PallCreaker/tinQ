@@ -1,3 +1,6 @@
 class Brand < ActiveRecord::Base
-  belongs_to :product
+  has_many :product
+
+  validates :name, presence: { message: 'なにか入力して下さい'}
+
 end

@@ -29,6 +29,9 @@ gem 'devise', '~> 3.2.4'
 
 gem 'zurb-foundation', '~> 4.3.2'
 
+gem 'aws-sdk', '~> 1.46.0'
+gem 'paperclip', '~> 4.1.1', :git => "git://github.com/thoughtbot/paperclip.git"
+
 group :test, :development do
   gem 'rspec-rails'
 end
