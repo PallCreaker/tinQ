@@ -15,23 +15,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
     super
   end
 
-=begin
-  def update
-    super
-  end
-=end
-
-  def update
-    @user = User.find(current_user.id)
-    if @user.update_without_current_password(params[:user])
-      sign_in @user, bypass: true
-      set_flash_message :notice, :updated
-      redirect_to after_update_path_for(@user)
-    else
-      render 'edit'
-    end
-  end
-
   def update
     self.resource = resource_class.to_adapter.get!(send(:"current_#{resource_name}").to_key)
     prev_unconfirmed_email = resource.unconfirmed_email if resource.respond_to?(:unconfirmed_email)
