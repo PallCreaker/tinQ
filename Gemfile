@@ -34,6 +34,7 @@ gem 'paperclip', '~> 4.1.1', :git => "git://github.com/thoughtbot/paperclip.git"
 
 group :test, :development do
   gem 'rspec-rails'
+  gem 'guard-rspec'
 end
 
 group :development do

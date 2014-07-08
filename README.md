@@ -32,6 +32,7 @@ cp config/database.yml.sample config/database.yml
 vim config/database.yml # 環境に合わせて修正
 bundle install --path vendor/bundle
 rake db:create # bundle exec rake db:create でも。
+# おかしかったら、rake db:migrate:reset
 rake db:migrate
 rake db:seed
 ```
