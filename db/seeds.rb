@@ -5,4 +5,11 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-User.create(email:'test@test.com', password: 'testtest', name: 'QynQyn')
+
+User.delete_all
+Category.delete_all
+Brand.delete_all
+Product.delete_all
+
+FactoryGirl.create_list(:user, 5)
+FactoryGirl.create_list(:post, 10)
