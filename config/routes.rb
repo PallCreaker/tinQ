@@ -9,11 +9,21 @@ Rails.application.routes.draw do
 
   resources :posts
 
-  get 'users/index'
+  get '/users' => "users#index", as: :user
+  get "/user/:name" => "users#show"#, as: :user
+  root 'users#index'
 
-  get 'users/show'
+  devise_for :users, controllers: {
+    sessions:      "users/sessions",
+    registrations: "users/registrations",
+    passwords:     "users/passwords",
+    omniauth_callbacks: "users/omniauth_callbacks" 
+  }
 
-  devise_for :users
+  #match "/auth/:provider/callback" => "sessions#callback"
+  #match "/logout" => "sessions#destroy", :as => :logout
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

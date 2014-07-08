@@ -27,9 +27,9 @@ ActiveRecord::Schema.define(version: 20140704125007) do
 
   create_table "posts", force: true do |t|
     t.string   "content"
-    t.integer  "user_id"
-    t.integer  "category_id"
-    t.integer  "product_id"
+    t.integer  "user_id",                        null: false
+    t.integer  "category_id",                    null: false
+    t.integer  "product_id",                     null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "photo_file_name"
@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 20140704125007) do
 
   create_table "products", force: true do |t|
     t.string   "goods_name"
-    t.integer  "brand_id"
+    t.integer  "brand_id",   null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -65,10 +65,13 @@ ActiveRecord::Schema.define(version: 20140704125007) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "name"
+    t.string   "name",                                null: false
+    t.string   "uid",                    default: "", null: false
+    t.string   "provider",               default: "", null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["name"], name: "index_users_on_name", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end
