@@ -4,8 +4,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   # Auth users
-  before_filter :authenticate_user!
-  before_filter :configure_permitted_parameters, if: :devise_controller?
+  before_action :authenticate_user!
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
   protected
     def configure_permitted_parameters
