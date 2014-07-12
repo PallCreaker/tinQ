@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   resources :qynqyns
 
-  resources :categories
+  resources :parent_categories
 
   resources :posts
 

@@ -10,6 +10,6 @@ require 'rails_helper'
 #     end
 #   end
 # end
-RSpec.describe CategoriesHelper, :type => :helper do
+RSpec.describe ParentCategoriesHelper, :type => :helper do
   pending "add some examples to (or delete) #{__FILE__}"
 end

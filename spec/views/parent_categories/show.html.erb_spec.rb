@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe "categories/show", :type => :view do
+RSpec.describe "parent_categories/show", :type => :view do
   before(:each) do
-    @category = assign(:category, Category.create!(
+    @parent_category = assign(:parent_category, ParentCategory.create!(
       :name => "Name"
     ))
   end
