@@ -8,4 +8,6 @@ class Image < ActiveRecord::Base
   validates_attachment_content_type :image,
     content_type: { content_type: ["image/jpg", "image/png","image/jpeg"] },
     size: { less_than: 3.megabytes }
+
+  validates :product_id, presence: true
 end
