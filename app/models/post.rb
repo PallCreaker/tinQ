@@ -2,7 +2,6 @@ class Post < ActiveRecord::Base
   belongs_to :user
   has_one :qynqyn
   belongs_to :product
-  belongs_to :category
 
   default_scope { where('is_deleted != 1')}
   scope :latest, -> { order('update_at desc') }
@@ -22,7 +21,6 @@ class Post < ActiveRecord::Base
 
   validates :content, presence: { message: '必須です。'}
   validates :user_id, presence: true, numericality: { only_integer: true }
-  validates :category_id, presence: true, numericality: { only_integer: true }
   validates :product_id, presence: true, numericality: { only_integer: true }
 
 end
