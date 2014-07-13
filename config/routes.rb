@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :child_categories
+
   resources :brands
 
   resources :products

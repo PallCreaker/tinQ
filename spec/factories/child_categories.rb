@@ -2,6 +2,6 @@
 
 FactoryGirl.define do
   factory :child_category do
-    parenc_category_id 1
+    parent_category_id 1
   end
 end
