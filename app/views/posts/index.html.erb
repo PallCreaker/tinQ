@@ -13,7 +13,7 @@
       <tr>
         <td><%= post.content %></td>
         <td><%= image_tag post.photo.url(:medium) unless post.photo.nil? %></td>
-        <td><%= post.category.name unless post.category.nil? %></td>
+        <td><%= post.child_category.name unless post.child_category.nil? %></td>
         <td><%= post.product.goods_name unless post.product.nil? %></td>
         <td><%= link_to 'Show', post %></td>
         <td><%= link_to 'Edit', edit_post_path(post) %></td>
