@@ -9,5 +9,5 @@ class ProductImage < ActiveRecord::Base
     content_type: { content_type: ["image/jpg", "image/png","image/jpeg"] },
     size: { less_than: 3.megabytes }
 
-  validates :product_id, presence: true
+  validates :product_id, presence: true, numericality: { only_integer: true }
 end

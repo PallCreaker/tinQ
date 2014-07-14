@@ -22,5 +22,4 @@ class Post < ActiveRecord::Base
   validates :content, presence: { message: '必須です。'}
   validates :user_id, presence: true, numericality: { only_integer: true }
   validates :product_id, presence: true, numericality: { only_integer: true }
-
 end
