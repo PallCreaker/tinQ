@@ -1,6 +1,6 @@
-class CreateImages < ActiveRecord::Migration
+class CreateProductImages < ActiveRecord::Migration
   def change
-    create_table :images do |t|
+    create_table :product_images do |t|
       t.integer :product_id, null: false
       t.attachment :image
     end

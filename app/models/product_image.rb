@@ -1,4 +1,4 @@
-class Image < ActiveRecord::Base
+class ProductImage < ActiveRecord::Base
   belongs_to :product
   has_attached_file :image,
     storage: :s3,
