@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140714021429) do
+ActiveRecord::Schema.define(version: 20140714023128) do
 
   create_table "brands", force: true do |t|
     t.string   "name"
@@ -24,14 +24,6 @@ ActiveRecord::Schema.define(version: 20140714021429) do
     t.integer  "parent_category_id", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "images", force: true do |t|
-    t.integer  "product_id",         null: false
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
   end
 
   create_table "parent_categories", force: true do |t|
@@ -51,6 +43,14 @@ ActiveRecord::Schema.define(version: 20140714021429) do
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
     t.integer  "is_deleted",         default: 0, null: false
+  end
+
+  create_table "product_images", force: true do |t|
+    t.integer  "product_id",         null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   create_table "products", force: true do |t|
@@ -89,6 +89,7 @@ ActiveRecord::Schema.define(version: 20140714021429) do
     t.string   "icon_content_type"
     t.integer  "icon_file_size"
     t.datetime "icon_updated_at"
+    t.string   "nickname",               default: "", null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

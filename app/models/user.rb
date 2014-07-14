@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
 
   has_many :posts
   validates :name, presence: true, length: { maximum: 30 }
+  validates :name, length: { maximum: 30 }
 
   has_attached_file :icon,
     storage: :s3,
