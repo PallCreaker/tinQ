@@ -69,6 +69,6 @@ class ChildCategoriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def child_category_params
-      params.require(:child_category).permit(:parent_category_id)
+      params.require(:child_category).permit(:parent_category_id, :name)
     end
 end

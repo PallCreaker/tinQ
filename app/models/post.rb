@@ -15,11 +15,10 @@ class Post < ActiveRecord::Base
     :styles => { :medium => "400x400>", :thumb => "200x200>" }, 
     :default_url => "/images/:style/missing.png"
   validates_attachment :photo, :presence => true,
-    :content_type => { :content_type => ["image/jpg", "image/jpeg", "image/gif", "image/png"], message: 'ファイルがおかしいです。' },
+    :content_type => { :content_type => ["image/jpg", "image/jpeg", "image/gif", "image/png"], message: 'ファイル形式が間違っています。' },
     # file size max 3MB
     :size => { :in => 0..3072.kilobytes, message: 'ファイルが大きいです。' }
 
   validates :content, presence: { message: '必須です。'}
   validates :user_id, presence: true, numericality: { only_integer: true }
-  validates :product_id, presence: true, numericality: { only_integer: true }
 end
