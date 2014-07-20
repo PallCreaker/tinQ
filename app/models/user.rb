@@ -6,13 +6,12 @@ class User < ActiveRecord::Base
 
   has_many :posts
   validates :name, presence: true, length: { maximum: 30 }
-  validates :name, length: { maximum: 30 }
 
   has_attached_file :icon,
     storage: :s3,
     s3_credentials: "#{Rails.root}/config/s3.yml",
     url: "s3_domain_url",
-    #default_url: "/assets/user_noimage.png", #pathに画像がまだないので一旦コメントアウト
+    #default_url: "/assets/user_noimage.png", #TODO: pathに画像がまだないので一旦コメントアウト
     path: ":attachment/:id/:updated_at.:extension"
   validates_attachment_content_type :icon,
     content_type: { content_type: ["image/jpg", "image/png","image/jpeg"] },

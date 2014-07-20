@@ -76,4 +76,10 @@ class PostsController < ApplicationController
     def post_params
       params.require(:post).permit(:content, :product_id, :photo)
     end
+
+    def create_post_product(post_id, product_name)
+      product = Product.where("goods_name = ?, #{product_name}").limit(1)
+      @post_product = PostProduct.new(post_id: post_id, product_id: product.id)
+      @post_product.save
+    end
 end
