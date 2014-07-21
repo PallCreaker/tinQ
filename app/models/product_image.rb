@@ -6,7 +6,7 @@ class ProductImage < ActiveRecord::Base
     url: "s3_domain_url",
     path: ":attachment/:id/:updated_at.:extension"
   validates_attachment_content_type :image,
-    content_type: { content_type: ["image/jpg", "image/png","image/jpeg"] },
+    content_type: { content_type: ["image/jpg", "image/png","image/jpeg", "image/gif"] },
     size: { less_than: 3.megabytes }
 
   validates :product_id, presence: true, numericality: { only_integer: true }

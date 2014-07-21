@@ -1,7 +1,7 @@
 class Post < ActiveRecord::Base
   belongs_to :user
   has_one :qynqyn
-  has_many :post_product
+  has_many :post_products
 
   default_scope { where('is_deleted != 1')}
   scope :latest, -> { order('update_at desc') }
