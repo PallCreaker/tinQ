@@ -45,6 +45,12 @@ group :development do
   gem 'pry-rails'
 
   # gem 'foreman'
+
+  gem 'capistrano', '~> 3.2.1'
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv'
+  gem 'capistrano-bundler'
+  gem 'capistrano3-unicorn' # unicornを使っている場合のみ
 end
 
 # Use ActiveModel has_secure_password
@@ -53,8 +59,7 @@ end
 # Use unicorn as the app server
 # gem 'unicorn'
 
-# Use Capistrano for deployment
-gem 'capistrano-rails', '~> 1.1.1', group: :development
+
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
