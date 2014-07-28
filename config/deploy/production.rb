@@ -7,9 +7,10 @@
 set :branch, 'master'
 set :stage, :production
 
-role :app, %w{ec2-user@54.92.51.166}
-role :web, %w{ec2-user@54.92.51.166}
-role :db,  %w{ec2-user@54.92.51.166}
+# TODO: 下の入れるとsshのエラーが出る。
+# role :app, %w{ec2-user@54.92.51.166}
+# role :web, %w{ec2-user@54.92.51.166}
+# role :db,  %w{ec2-user@54.92.51.166}
 
 # Extended Server Syntax
 # ======================
@@ -38,16 +39,14 @@ role :db,  %w{ec2-user@54.92.51.166}
 # And/or per server (overrides global)
 # ------------------------------------
 server '54.92.51.166',
-  user: 'ec2-usasdfasdfers',
+  user: 'ec2-user',
   roles: %w{web app},
   # keys: %w(~/.ssh/tinq.pem),
   ssh_options: {
-    # podrt: 22,
-    user: 'ec2f-user', # overrides user setting above
+    port: 22,
+    user: 'ec2-user', # overrides user setting above
     keys: %w(~/.ssh/tinq.pem),
-    # keys: %w(/Users/KazumasaFujita1/.ssh/tinq.pem),
     forward_agent: true,
-    # auth_methods: %w(publickey password)
     auth_methods: %w(publickey)
     # password: 'please use keys'
   }

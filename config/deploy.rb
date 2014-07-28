@@ -2,7 +2,7 @@
 lock '3.2.1'
 
 set :application, 'tinQ'
-set :repo_url, 'git@github.com:PallCreaker/tinQ.git'
+set :repo_url, 'github:PallCreaker/tinQ.git'
 set :rbenv_ruby, '2.1.0'
 set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
 set :rbenv_map_bins, %w{rake gem bundle ruby rails}
@@ -30,10 +30,12 @@ set :log_level, :debug
 # set :pty, true
 
 # Default value for :linked_files is []
-set :linked_files, %w{config/database.yml}
+# set :linked_files, %w{config/database.yml}
+set :linked_files, %w{/home/ec2-user/public_html/tinQ/config/database.yml}
+# set :linked_files, "#{shared_path}config/database.yml"
 
 # Default value for linked_dirs is []
-set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
+# set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
