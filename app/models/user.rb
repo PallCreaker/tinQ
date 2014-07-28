@@ -36,7 +36,7 @@ class User < ActiveRecord::Base
   end
 
   # twitterではemailを取得できないので、適当に一意のemailを生成
-  # TODO: 変更 のちに、サービス名のメルアドにしたい
+  # TODO: 変更 のちに、サービス名のメールアドレスにしたいかも？(exampleのほうがいいかな？)
   def self.create_unique_email
     User.create_unique_string + "@example.com"
   end
