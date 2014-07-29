@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
   resources :posts
 
+  resources :product_images
+
   get '/users' => "users#index", as: :user
   get "/user/:name" => "users#show"#, as: :user
   root 'users#index'
