@@ -15,6 +15,7 @@ class ProductsController < ApplicationController
   # GET /products/new
   def new
     @product = Product.new
+    @product_image = ProductImage.new
     @brands = Brand.all
   end
 
@@ -66,10 +67,11 @@ class ProductsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_product
       @product = Product.find(params[:id])
+      @child_categories = ChildCategory.all
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:goods_name, :brand_id)
+      params.require(:product).permit(:goods_name, :brand_id, :child_category_id)
     end
 end

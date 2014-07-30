@@ -13,6 +13,7 @@
 
   <div class="field">
     <p>商品を投稿しましょう</p>
+    <% # TODO: child_categoryにして、テーブルもpostとは違うのでフォームの変更が必要 %>
     category
     <%= f.collection_select :category_id, @categories, :id, :name %> <br>
 

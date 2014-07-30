@@ -23,7 +23,7 @@ FactoryGirl.define do
     sequence(:goods_name) { |n| "マスカラ_#{n}" }
   end
 
-  factory :category do
+  factory :parent_category do
     sequence(:name) { |n| "下地_#{n}" }
   end
 

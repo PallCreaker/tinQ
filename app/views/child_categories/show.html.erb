@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Parent category:</strong>
+  <%= @child_category.parent_category_id %>
+</p>
+
+<%= link_to 'Edit', edit_child_category_path(@child_category) %> |
+<%= link_to 'Back', child_categories_path %>

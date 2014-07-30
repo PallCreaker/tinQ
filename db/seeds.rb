@@ -7,8 +7,8 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 User.delete_all
-Category.delete_all
-Brand.delete_all
+ChildCategory.delete_all
+ParentBrand.delete_all
 Product.delete_all
 
 FactoryGirl.create_list(:user, 5)

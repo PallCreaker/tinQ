@@ -1,0 +1,2 @@
+module ParentCategoriesHelper
+end

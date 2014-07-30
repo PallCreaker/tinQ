@@ -1,13 +1,17 @@
 Rails.application.routes.draw do
+  resources :child_categories
+
   resources :brands
 
   resources :products
 
   resources :qynqyns
 
-  resources :categories
+  resources :parent_categories
 
   resources :posts
+
+  resources :product_images
 
   get '/users' => "users#index", as: :user
   get "/user/:name" => "users#show"#, as: :user
