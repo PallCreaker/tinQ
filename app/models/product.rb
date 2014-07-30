@@ -1,6 +1,7 @@
 class Product < ActiveRecord::Base
   belongs_to :brand
   has_many :product_images
+  has_many :post_products
   has_many :posts, through: :post_products
   belongs_to :child_category
 
