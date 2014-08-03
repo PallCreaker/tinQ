@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-  before_action :fetch_product_data, only: [:create, :new]
+  before_action :fetch_product_data, only: [:create, :new, :edit, :update]
 
   # GET /posts
   # GET /posts.json
@@ -21,15 +21,17 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
+    @post = Post.find(params[:id])
+    @post_product = PostProduct.where(post_id: params[:id])
   end
 
   # POST /posts
   # POST /posts.json
   def create
-    @post = Post.new(post_params)
-    @post.user_id = current_user.id
+    @post = Post.new(content: params[:post][:content], user_id: current_user.id)
     respond_to do |format|
       if @post.save
+        PostProduct.create(post_id: @post.id, product_id: params[:post_product][:id])
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
         format.json { render :show, status: :created, location: @post }
       else

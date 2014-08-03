@@ -16,8 +16,9 @@
 
     goods
     <%= fields_for @post_product do |p| %>
-      <%= p.collection_select :id, @products, :id, :goods_name %> <br>
+      <%= p.collection_select :id, @products, :id, :goods_name %>
     <% end %>
+    <br>
     <%= f.label :content %>
     <%= f.text_field :content %>
     <br>
