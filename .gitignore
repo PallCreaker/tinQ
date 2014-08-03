@@ -33,4 +33,3 @@ config/s3.yml
 
 #とりあえずの画像保存先
 /public/uploads
-/app/assets/images/noimage.jpg
