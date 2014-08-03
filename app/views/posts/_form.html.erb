@@ -13,18 +13,17 @@
 
   <div class="field">
     <p>商品を投稿しましょう</p>
-    <% # TODO: child_categoryにして、テーブルもpostとは違うのでフォームの変更が必要 %>
-    category
-    <%= f.collection_select :category_id, @categories, :id, :name %> <br>
 
     goods
-    <%= f.collection_select :product_id, @products, :id, :goods_name %> <br>
+    <%= fields_for @post_product do |p| %>
+      <%= p.collection_select :id, @products, :id, :goods_name %> <br>
+    <% end %>
     <%= f.label :content %>
     <%= f.text_field :content %>
     <br>
 
-    <%= f.label :photo %>
-    <%= f.file_field :photo %>
+    <%= f.label :image %>
+    <%= f.file_field :image %>
   </div>
   <div class="actions">
     <%= f.submit %>

@@ -7,6 +7,8 @@ class Post < ActiveRecord::Base
   default_scope { where('is_deleted != 1')}
   scope :latest, -> { order('update_at desc') }
 
+  mount_uploader :image, ImageUploader
+
 =begin
   # validation
   has_attached_file :photo, storage: :s3,

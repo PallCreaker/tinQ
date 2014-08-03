@@ -3,6 +3,7 @@
 <p>
   <strong>Content:</strong>
   <%= @post.content %>
+  <%= image_tag @post.image_url.to_s %>
 </p>
 
 <%= link_to 'Edit', edit_post_path(@post) %> |

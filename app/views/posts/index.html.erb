@@ -12,9 +12,9 @@
     <% @posts.each do |post| %>
       <tr>
         <td><%= post.content %></td>
-        <td><%= image_tag post.photo.url(:medium) unless post.photo.nil? %></td>
-        <td><%= post.child_category.name unless post.child_category.nil? %></td>
-        <td><%= post.product.goods_name unless post.product.nil? %></td>
+        <td><%= image_tag post.image.url(:thumb) unless post.image.nil? %></td>
+        <td><%#= post.child_category.name unless post.child_category.nil? %></td>
+        <td><%#= post.product.goods_name unless post.product.nil? %></td>
         <td><%= link_to 'Show', post %></td>
         <td><%= link_to 'Edit', edit_post_path(post) %></td>
         <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>

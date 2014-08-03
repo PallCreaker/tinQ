@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+  source 'https://rubygems.org'
 # ruby '~>2.1.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -31,6 +31,8 @@ gem 'zurb-foundation', '~> 4.3.2'
 
 gem 'aws-sdk', '~> 1.46.0'
 gem 'paperclip', '~> 4.1.1', :git => "git://github.com/thoughtbot/paperclip.git"
+gem 'carrierwave'
+gem "rmagick", require: 'RMagick'
 
 group :test, :development do
   gem 'rspec-rails'

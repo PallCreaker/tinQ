@@ -16,6 +16,7 @@ class PostsController < ApplicationController
   # GET /posts/new
   def new
     @post = Post.new
+    @post_product = PostProduct.new
   end
 
   # GET /posts/1/edit
@@ -74,7 +75,7 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:content, :user_id, :photo)
+      params.require(:post).permit(:content, :user_id, :image)
     end
 
     def create_post_product(post_id, product_name)

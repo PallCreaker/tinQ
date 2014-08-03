@@ -45,6 +45,11 @@ GEM
     bcrypt (3.1.7)
     buftok (0.2.0)
     builder (3.2.2)
+    carrierwave (0.10.0)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      json (>= 1.7)
+      mime-types (>= 1.16)
     celluloid (0.15.2)
       timers (~> 1.1.0)
     climate_control (0.0.3)
@@ -190,6 +195,7 @@ GEM
     rdoc (4.1.1)
       json (~> 1.4)
     remotipart (1.2.1)
+    rmagick (2.13.2)
     rspec (3.0.0)
       rspec-core (~> 3.0.0)
       rspec-expectations (~> 3.0.0)
@@ -267,6 +273,7 @@ PLATFORMS
 
 DEPENDENCIES
   aws-sdk (~> 1.46.0)
+  carrierwave
   coffee-rails (~> 4.0.0)
   devise (~> 3.2.4)
   factory_girl_rails
@@ -280,6 +287,7 @@ DEPENDENCIES
   pry-rails
   rails (= 4.1.0)
   rails_admin (~> 0.6.2)
+  rmagick
   rspec-rails
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
