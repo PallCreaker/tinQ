@@ -16,7 +16,12 @@ class PostsController < ApplicationController
   # GET /posts/new
   def new
     @post = Post.new
-    @post_product = PostProduct.new
+    #@post_product = PostProduct.new
+
+    3.times {
+      #関連オブジェクトをbuild
+      @post.products.build
+    }
   end
 
   # GET /posts/1/edit
@@ -28,10 +33,12 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
+    # todo: トランザクション
     @post = Post.new(content: params[:post][:content], user_id: current_user.id)
+    #@post = Post.new(post_params)
     respond_to do |format|
       if @post.save
-        PostProduct.create(post_id: @post.id, product_id: params[:post_product][:id])
+        #PostProduct.create(post_id: @post.id, product_id: params[:post_product][:id])
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
         format.json { render :show, status: :created, location: @post }
       else
