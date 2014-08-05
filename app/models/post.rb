@@ -8,7 +8,7 @@ class Post < ActiveRecord::Base
   scope :latest, -> { order('update_at desc') }
 
   mount_uploader :image, ImageUploader
-  accepts_nested_attributes_for :products
+  accepts_nested_attributes_for :post_products
 
 
 =begin

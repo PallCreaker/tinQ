@@ -15,11 +15,22 @@
     <p>商品を投稿しましょう</p>
 
     goods
-    <% @post.products.each do |product| %>
-      <%= f.fields_for :products, product do |product_field| %>
-        <%= product_field.collection_select :id, @products, :id, :goods_name %>
+    <%# @post.products.each do |product| %>
+      <%#= f.fields_for :products, product do |product_field| %>
+        <%#= product_field.select @products, :id, :goods_name, include_blank: true %>
+      <%# end %>
+    <%# end %>
+
+    <% @post.post_products.each do |post_product| %>
+      <%= f.fields_for :post_products, post_product do |post_product_field| %>
+        <%= post_product_field.collection_select :id, @products, :id, :goods_name, include_blank: true %>
       <% end %>
     <% end %>
+
+    <%#= f.fields_for :entries do |entry| %>
+      <%#= render "entry_fields", f: entry %>
+    <%# end %>
+
     <br>
     <%= f.label :content %>
     <%= f.text_field :content %>
