@@ -32,6 +32,7 @@ gem 'aws-sdk', '~> 1.46.0'
 # 画像関連
 gem 'carrierwave'
 gem "rmagick", require: 'RMagick'
+gem 'fog' # for S3
 
 # twitterログイン
 gem 'omniauth'
