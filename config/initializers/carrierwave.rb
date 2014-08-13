@@ -6,7 +6,7 @@ CarrierWave.configure do |config|
     :region                 => 'ap-northeast-1'
   }
 
-  config.fog_directory = 'your_backet' if Rails.env.production?
-  config.fog_directory = 'your_backet_for_dev' if Rails.env.development?
+  config.fog_directory = 'tinq' if Rails.env.production?
+  config.fog_directory = 'tinq-dev' if Rails.env.development?
 
 end
