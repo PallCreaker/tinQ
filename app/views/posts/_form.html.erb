@@ -14,16 +14,30 @@
   <div class="field">
     <p>商品を投稿しましょう</p>
 
-    goods
+    goods<br>
     <%# @post.products.each do |product| %>
       <%#= f.fields_for :products, product do |product_field| %>
         <%#= product_field.select @products, :id, :goods_name, include_blank: true %>
       <%# end %>
     <%# end %>
 
-    <% @post.post_products.each do |post_product| %>
-      <%= f.fields_for :post_products, post_product do |post_product_field| %>
-        <%= post_product_field.collection_select :id, @products, :id, :goods_name, include_blank: true %>
+    <% @post.products.each do |product| %>
+      <%= f.fields_for "products_attributes[]", product do |product_field| %>
+        <%= product_field.label :goods_name %>
+        <%= product_field.text_field :goods_name %>
+        <br>
+        <%= product_field.label :brand_id %>
+        <%= product_field.select :brand_id, @brands.map{|t| [t.name, t.id]}, include_blank: true %>
+        <br>
+        <%= product_field.label :child_category_id %>
+        <%= product_field.select :child_category_id, @child_categories.map{|t| [t.name, t.id]}, include_blank: true %>
+        <br>
+
+
+        <%#= f.select :brand_id, @brands.map{|t| [t.name, t.id]} %>
+        <br>
+        <br>
+        <br>
       <% end %>
     <% end %>
 
@@ -38,6 +52,7 @@
 
     <%= f.label :image %>
     <%= f.file_field :image %>
+    <%#= f.hidden_field :user_id, :current_user %>
   </div>
   <div class="actions">
     <%= f.submit %>
