@@ -35,44 +35,23 @@ class PostsController < ApplicationController
   def create
         @brands = Brand.all
         @child_categories = ChildCategory.all
-    #Post.transaction do
+    Post.transaction do
       @post = Post.new(content: params[:post][:content], image: params[:post][:image], user_id: current_user.id)
 
       # 配列の個数分をループでbuildする
       product_params = params[:post][:products_attributes]
-      logger.debug(product_params)
       product_params.each do |pp|
-        logger.debug(pp)
-        @post.products.build(pp)
+        @post.products.build(goods_name: pp[:goods_name], brand_id: pp[:brand_id], child_category_id: pp[:child_category_id])
       end
 
-=begin
-      @product1 = Product.new(params[:post][products_attributes][0])
-      @product2 = Product.new(params[:post][products_attributes][1])
-      @product3 = Product.new(params[:post][products_attributes][2])
-      @products = [@product1, @product2, @product3]
-      @products.each do |product|
-        logger.debug(product)
-        if product.present?
-          #@product = Product.new(product)
-          product.save
-        end
-      end
-=end
-      #@post.product = products_attributes:[:name, :brand_id, :child_category_id, :_destroy])
       if @post.save
-        #@post.save
-        #if params[:post][:post_products_attributes][0].present?
-          #@post_product = PostProduct.new(post_id: @post.id, product_id: params[:post][:post_products_attributes][0][:id])
-          #@post_product.save
-        #end
         redirect_to @post, notice: 'Post was successfully created.'
       else
         render :new
       end
-    #end
-  #rescue
-    #redirect_to new_post_path, alert:'Postの作成に失敗しました。'
+    end
+  rescue
+    redirect_to new_post_path, alert:'Postの作成に失敗しました。'
   end
 
   # PATCH/PUT /posts/1
@@ -104,7 +83,7 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:content, :user_id, :image, products_attributes: [])
+      params.require(:post).permit(:content, :user_id, :image, products_attributes:[:goods_name, :brand_id, :child_category_id]) #products_attributes: [])
     end
 
     def create_post_product(post_id, product_name)
