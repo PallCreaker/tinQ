@@ -1,19 +1,14 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-  #before_action :fetch_brand_data, only: [:create, :new, :edit, :update]
+  before_action :fetch_product, only: [:create, :new, :edit, :update]
 
-  # GET /posts
-  # GET /posts.json
   def index
     @posts = Post.all
   end
 
-  # GET /posts/1
-  # GET /posts/1.json
   def show
   end
 
-  # GET /posts/new
   def new
     @post = Post.new
     @brands = Brand.all
@@ -24,24 +19,20 @@ class PostsController < ApplicationController
     }
   end
 
-  # GET /posts/1/edit
   def edit
-    # @post = Post.find(params[:id])
     @post_product = PostProduct.where(post_id: params[:id])
   end
 
-  # POST /posts
-  # POST /posts.json
   def create
-        @brands = Brand.all
-        @child_categories = ChildCategory.all
     Post.transaction do
       @post = Post.new(content: params[:post][:content], image: params[:post][:image], user_id: current_user.id)
 
       # 配列の個数分をループでbuildする
       product_params = params[:post][:products_attributes]
       product_params.each do |pp|
-        @post.products.build(goods_name: pp[:goods_name], brand_id: pp[:brand_id], child_category_id: pp[:child_category_id])
+
+          @post.products.build(goods_name: pp[:goods_name], brand_id: pp[:brand_id], child_category_id: pp[:child_category_id])
+
       end
 
       if @post.save
@@ -54,8 +45,6 @@ class PostsController < ApplicationController
     redirect_to new_post_path, alert:'Postの作成に失敗しました。'
   end
 
-  # PATCH/PUT /posts/1
-  # PATCH/PUT /posts/1.json
   def update
     if @post.update(post_params)
       redirect_to @post, notice: 'Post was successfully updated.'
@@ -64,8 +53,6 @@ class PostsController < ApplicationController
     end
   end
 
-  # DELETE /posts/1
-  # DELETE /posts/1.json
   def destroy
     @post.destroy
     redirect_to posts_url, notice: 'Post was successfully destroyed.'
@@ -77,13 +64,14 @@ class PostsController < ApplicationController
       @post = Post.find(params[:id])
     end
 
-    def fetch_brand_data
+    def fetch_product
       @brands = Brand.all
+      @child_categories = ChildCategory.all
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:content, :user_id, :image, products_attributes:[:goods_name, :brand_id, :child_category_id]) #products_attributes: [])
+      params.require(:post).permit(:content, :user_id, :image, products_attributes:[:goods_name, :brand_id, :child_category_id])
     end
 
     def create_post_product(post_id, product_name)
