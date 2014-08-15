@@ -30,9 +30,9 @@ class PostsController < ApplicationController
       # 配列の個数分をループでbuildする
       product_params = params[:post][:products_attributes]
       product_params.each do |pp|
-
+        if pp[:goods_name].present? && pp[:brand_id] && pp[:child_category_id]
           @post.products.build(goods_name: pp[:goods_name], brand_id: pp[:brand_id], child_category_id: pp[:child_category_id])
-
+        end
       end
 
       if @post.save
