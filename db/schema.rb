@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140801000910) do
+ActiveRecord::Schema.define(version: 20140813161018) do
 
   create_table "brands", force: true do |t|
     t.string   "name"
@@ -42,21 +42,11 @@ ActiveRecord::Schema.define(version: 20140801000910) do
 
   create_table "posts", force: true do |t|
     t.string   "content"
-    t.integer  "user_id",                        null: false
+    t.integer  "user_id",                null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "is_deleted",         default: 0, null: false
-    t.string   "photo_file_name"
-    t.string   "photo_content_type"
-    t.integer  "photo_file_size"
-    t.datetime "photo_updated_at"
+    t.integer  "is_deleted", default: 0, null: false
     t.string   "image"
-  end
-
-  create_table "product_images", force: true do |t|
-    t.integer  "product_id", null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "products", force: true do |t|
@@ -92,10 +82,7 @@ ActiveRecord::Schema.define(version: 20140801000910) do
     t.string   "provider",               default: "", null: false
     t.string   "description",            default: "", null: false
     t.string   "nickname",               default: "", null: false
-    t.string   "icon_file_name"
-    t.string   "icon_content_type"
-    t.integer  "icon_file_size"
-    t.datetime "icon_updated_at"
+    t.string   "icon"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
