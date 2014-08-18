@@ -6,7 +6,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
 
-  # Choose what kind of storage to use for this uploader: 
+  # Choose what kind of storage to use for this uploader:
   # storage :file
   storage :fog # for S3
 
@@ -14,7 +14,9 @@ class ImageUploader < CarrierWave::Uploader::Base
   # This is a sensible default for uploaders that are meant to be mounted:
   # TODO: 保存先をRails.envによって変更
   def store_dir
-    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+    if Rails.env == "development"
+      "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+    end
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
@@ -32,9 +34,10 @@ class ImageUploader < CarrierWave::Uploader::Base
     # do something
   end
 
+  process resize_to_fill: [400, 400]
   # Create different versions of your uploaded files:
   version :thumb do
-    process resize_to_fit: [400, 400]
+    process resize_to_fit: [200, 200]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.

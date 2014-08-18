@@ -32,6 +32,12 @@
         <%= product_field.label :child_category_id %>
         <%= product_field.select :child_category_id, @child_categories.map{|t| [t.name, t.id]}, include_blank: true %>
         <br>
+        <%= product_field.label :image %>
+        <% if product.image? %>
+          <%= image_tag product.image_url(:thumb).to_s %>
+          <%= f.hidden_field :image_cache if @user.image_cache %>
+        <% end %>
+        <%= f.file_field :image %>
 
 
         <%#= f.select :brand_id, @brands.map{|t| [t.name, t.id]} %>

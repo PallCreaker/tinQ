@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-  before_action :fetch_product, only: [:create, :new, :edit, :update]
+  before_action :set_product, only: [:create, :new, :edit, :update]
 
   def index
     @posts = Post.all
@@ -11,8 +11,6 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
-    @brands = Brand.all
-    @child_categories = ChildCategory.all
     3.times {
       #関連オブジェクトをbuild
       @post.products.build
@@ -20,13 +18,11 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @post_product = PostProduct.where(post_id: params[:id])
   end
 
   def create
     Post.transaction do
       @post = Post.new(content: params[:post][:content], image: params[:post][:image], user_id: current_user.id)
-
       # 配列の個数分をループでbuildする
       product_params = params[:post][:products_attributes]
       product_params.each do |pp|
@@ -64,14 +60,14 @@ class PostsController < ApplicationController
       @post = Post.find(params[:id])
     end
 
-    def fetch_product
+    def set_product
       @brands = Brand.all
       @child_categories = ChildCategory.all
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:content, :user_id, :image, products_attributes:[:goods_name, :brand_id, :child_category_id])
+      params.require(:post).permit(:content, :user_id, :image, products_attributes:[:goods_name, :brand_id, :child_category_id, :image])
     end
 
     def create_post_product(post_id, product_name)
