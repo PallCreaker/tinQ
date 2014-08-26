@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-  before_action :set_product, only: [:create, :new, :edit, :update]
+  before_action :set_product, only: [:new, :edit]
 
   def index
     @posts = Post.all
@@ -32,26 +32,26 @@ class PostsController < ApplicationController
       end
 
       if @post.save
-        redirect_to @post, notice: 'Post was successfully created.'
+        redirect_to @post, notice: 'Posted.'
       else
-        render :new
+        redirect_to new_post_path, alert: 'Post was failed.'
       end
     end
   rescue
-    redirect_to new_post_path, alert:'Postの作成に失敗しました。'
+    redirect_to new_post_path, alert:'Post was failed.'
   end
 
   def update
     if @post.update(post_params)
-      redirect_to @post, notice: 'Post was successfully updated.'
+      redirect_to @post, notice: 'Post was updated.'
     else
-      render :edit
+      redirect_to edit_post_path, alert: 'Editing Post was failed.'
     end
   end
 
   def destroy
     @post.destroy
-    redirect_to posts_url, notice: 'Post was successfully destroyed.'
+    redirect_to posts_url, notice: 'Post was destroyed.'
   end
 
   private
