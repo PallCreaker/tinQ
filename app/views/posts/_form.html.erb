@@ -15,11 +15,6 @@
     <p>商品を投稿しましょう</p>
 
     goods<br>
-    <%# @post.products.each do |product| %>
-      <%#= f.fields_for :products, product do |product_field| %>
-        <%#= product_field.select @products, :id, :goods_name, include_blank: true %>
-      <%# end %>
-    <%# end %>
 
     <% @post.products.each do |product| %>
       <%= f.fields_for "products_attributes[]", product do |product_field| %>
@@ -38,18 +33,11 @@
           <%= product_field.hidden_field :image_cache if @user.image_cache %>
         <% end %>
         <%= product_field.file_field :image %>
-
-
-        <%#= f.select :brand_id, @brands.map{|t| [t.name, t.id]} %>
         <br>
         <br>
         <br>
       <% end %>
     <% end %>
-
-    <%#= f.fields_for :entries do |entry| %>
-      <%#= render "entry_fields", f: entry %>
-    <%# end %>
 
     <br>
     <%= f.label :content %>
@@ -58,7 +46,6 @@
 
     <%= f.label :image %>
     <%= f.file_field :image %>
-    <%#= f.hidden_field :user_id, :current_user %>
   </div>
   <div class="actions">
     <%= f.submit %>

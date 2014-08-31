@@ -12,7 +12,6 @@ class PostsController < ApplicationController
   def new
     @post = Post.new
     3.times {
-      #関連オブジェクトをbuild
       @post.products.build
     }
   end
@@ -23,15 +22,14 @@ class PostsController < ApplicationController
   def create
     Post.transaction do
       @post = Post.new(content: params[:post][:content], image: params[:post][:image], user_id: current_user.id)
-      # 配列の個数分をループでbuildする
-      product_params = params[:post][:products_attributes]
-      product_params.each do |pp|
+
+      params[:post][:products_attributes].each do |pp|
         if pp[:goods_name].present? && pp[:brand_id] && pp[:child_category_id]
           @post.products.build(goods_name: pp[:goods_name], brand_id: pp[:brand_id], child_category_id: pp[:child_category_id], image: pp[:image])
         end
       end
 
-      if @post.save
+      if @post.save!
         redirect_to @post, notice: 'Posted.'
       else
         render :new, alert: 'Post was failed.'
