@@ -27,14 +27,14 @@ class PostsController < ApplicationController
       product_params = params[:post][:products_attributes]
       product_params.each do |pp|
         if pp[:goods_name].present? && pp[:brand_id] && pp[:child_category_id]
-          @post.products.build(goods_name: pp[:goods_name], brand_id: pp[:brand_id], child_category_id: pp[:child_category_id])
+          @post.products.build(goods_name: pp[:goods_name], brand_id: pp[:brand_id], child_category_id: pp[:child_category_id], image: pp[:image])
         end
       end
 
       if @post.save
         redirect_to @post, notice: 'Posted.'
       else
-        redirect_to new_post_path, alert: 'Post was failed.'
+        render :new, alert: 'Post was failed.'
       end
     end
   rescue

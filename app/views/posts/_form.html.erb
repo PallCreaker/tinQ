@@ -35,9 +35,9 @@
         <%= product_field.label :image %>
         <% if product.image? %>
           <%= image_tag product.image_url(:thumb).to_s %>
-          <%= f.hidden_field :image_cache if @user.image_cache %>
+          <%= product_field.hidden_field :image_cache if @user.image_cache %>
         <% end %>
-        <%= f.file_field :image %>
+        <%= product_field.file_field :image %>
 
 
         <%#= f.select :brand_id, @brands.map{|t| [t.name, t.id]} %>
