@@ -6,10 +6,13 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-User.delete_all
-ChildCategory.delete_all
-ParentBrand.delete_all
-Product.delete_all
+# User.delete_all
+# ChildCategory.delete_all
+# ParentBrand.delete_all
+# Product.delete_all
 
-FactoryGirl.create_list(:user, 5)
-FactoryGirl.create_list(:post, 10)
+# FactoryGirl.create_list(:user, 5)
+# FactoryGirl.create_list(:post, 10)
+# FactoryGirl.create_list(:parent_category, 10)
+# FactoryGirl.create_list(:product, 10)
+# FactoryGirl.create_list(:brand, 10)

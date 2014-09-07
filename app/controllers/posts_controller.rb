@@ -1,65 +1,54 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-  before_action :fetch_product_data, only: [:create, :new]
+  before_action :set_product, only: [:new, :edit]
 
-  # GET /posts
-  # GET /posts.json
   def index
     @posts = Post.all
   end
 
-  # GET /posts/1
-  # GET /posts/1.json
   def show
+    @brand = Brand.find(params[:id])
+    @category = ChildCategory.find(params[:id])
   end
 
-  # GET /posts/new
   def new
     @post = Post.new
+    # product作成フォーム用に3回だけproductと、それに関連するpost_productをbuildする
+    3.times {
+      @post.products.build
+    }
   end
 
-  # GET /posts/1/edit
   def edit
   end
 
-  # POST /posts
-  # POST /posts.json
   def create
-    @post = Post.new(post_params)
-    @post.user_id = current_user.id
-    respond_to do |format|
-      if @post.save
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
-        format.json { render :show, status: :created, location: @post }
-      else
-        format.html { render :new }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
+    Post.transaction do
+      @post = Post.new(content: params[:post][:content], image: params[:post][:image], user_id: current_user.id)
+      params[:post][:products_attributes].each do |pp|
+        # productを作るのに必要な情報が揃っている場合のみproductをbuildする(同時にpost_productもbuildされる)
+        if pp[:goods_name].present? && pp[:brand_id] && pp[:child_category_id]
+          @post.products.build(goods_name: pp[:goods_name], brand_id: pp[:brand_id], child_category_id: pp[:child_category_id], image: pp[:image])
+        end
       end
+      @post.save!
+      redirect_to @post, notice: 'Posted.'
     end
+  rescue
+    redirect_to new_post_path, alert:'Post was failed.'
   end
 
-  # PATCH/PUT /posts/1
-  # PATCH/PUT /posts/1.json
   def update
-    respond_to do |format|
-      if @post.update(post_params)
-        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
-        format.json { render :show, status: :ok, location: @post }
-      else
-        format.html { render :edit }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
-      end
+    if @post.update(post_params)
+      redirect_to @post, notice: 'Post was updated.'
+    else
+      redirect_to edit_post_path, alert: 'Editing Post was failed.'
     end
   end
 
-  # DELETE /posts/1
-  # DELETE /posts/1.json
   def destroy
     @post.destroy
-    respond_to do |format|
-      format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to posts_url, notice: 'Post was destroyed.'
   end
 
   private
@@ -68,13 +57,14 @@ class PostsController < ApplicationController
       @post = Post.find(params[:id])
     end
 
-    def fetch_product_data
-      @products = Product.all
+    def set_product
+      @brands = Brand.all
+      @child_categories = ChildCategory.all
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:content, :user_id, :photo)
+      params.require(:post).permit(:content, :user_id, :image, products_attributes:[:goods_name, :brand_id, :child_category_id, :image])
     end
 
     def create_post_product(post_id, product_name)
