@@ -39,7 +39,10 @@
 <% if alert %>
   <p class="alert alert-error"><%= alert %></p>
 <% end %>
-<%= yield %>
+<%# Wrap all non-bar HTML in the .content div (this is actually what scrolls) %>
+<div class="content">
+  <%= yield %>
+</div>
 
 </body>
 </html>
