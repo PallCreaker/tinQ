@@ -7,6 +7,8 @@ class PostsController < ApplicationController
   end
 
   def show
+    @brand = Brand.find(params[:id])
+    @category = ChildCategory.find(params[:id])
   end
 
   def new

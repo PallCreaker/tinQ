@@ -1,9 +1,9 @@
 class Product < ActiveRecord::Base
   belongs_to :brand
+  belongs_to :child_category
   has_many :product_images
   has_many :post_products
   has_many :posts, through: :post_products
-  belongs_to :child_category
 
   mount_uploader :image, ImageUploader
 
