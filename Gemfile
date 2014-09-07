@@ -25,12 +25,21 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 
 gem 'rails_admin', '~> 0.6.2'
 
-gem 'devise', '~> 3.2.4'
-
 gem 'zurb-foundation', '~> 4.3.2'
 
 gem 'aws-sdk', '~> 1.46.0'
-gem 'paperclip', '~> 4.1.1', :git => "git://github.com/thoughtbot/paperclip.git"
+
+# 画像関連
+gem 'carrierwave'
+gem "rmagick", require: 'RMagick'
+gem 'fog' # for S3
+
+# twitterログイン
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'twitter'
+gem 'devise', '~> 3.2.4'
+gem 'nested_form'
 
 group :test, :development do
   gem 'rspec-rails'
@@ -58,9 +67,5 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-
-gem 'omniauth'
-gem 'omniauth-twitter'
-gem 'twitter'
 
 gem 'therubyracer'

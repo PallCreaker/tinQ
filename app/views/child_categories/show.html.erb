@@ -4,6 +4,10 @@
   <strong>Parent category:</strong>
   <%= @child_category.parent_category_id %>
 </p>
+<p>
+  <strong>Name:</strong>
+  <%= @child_category.name %>
+</p>
 
 <%= link_to 'Edit', edit_child_category_path(@child_category) %> |
 <%= link_to 'Back', child_categories_path %>
