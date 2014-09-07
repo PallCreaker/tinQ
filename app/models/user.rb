@@ -7,16 +7,6 @@ class User < ActiveRecord::Base
   has_many :posts
   validates :name, presence: true, length: { maximum: 30 }
 
-  has_attached_file :icon,
-    storage: :s3,
-    s3_credentials: "#{Rails.root}/config/s3.yml",
-    url: "s3_domain_url",
-    #default_url: "/assets/user_noimage.png", #TODO: pathに画像がまだないので一旦コメントアウト
-    path: ":attachment/:id/:updated_at.:extension"
-  validates_attachment_content_type :icon,
-    content_type: { content_type: ["image/jpg", "image/png", "image/jpeg", "image/gif"] },
-    size: { less_than: 3.megabytes }
-
   def self.find_for_twitter_oauth(auth, signed_in_resource=nil)
     user = User.where(provider: auth.provider, uid: auth.uid).first
     unless user

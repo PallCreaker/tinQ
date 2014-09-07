@@ -12,5 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require ratchet-v2.0.2/ratchet.min
 //= require turbolinks
 //= require_tree .

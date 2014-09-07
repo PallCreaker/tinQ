@@ -19,6 +19,10 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <!-- Make sure all your bars are the first things in your <body> -->
+  <header class="bar bar-nav">
+    <h1 class="title icon">Ratchet</h1>
+  </header>
   <p class="navbar-text pull-right">
     <% if user_signed_in? %>
       Logged in as <strong><%= current_user.email %></strong>.

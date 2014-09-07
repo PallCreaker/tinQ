@@ -1260,8 +1260,10 @@ select {
   font-style: normal;
   font-weight: normal;
 
-  src: url("../fonts/ratchicons.eot");
-  src: url("../fonts/ratchicons.eot?#iefix") format("embedded-opentype"), url("../fonts/ratchicons.woff") format("woff"), url("../fonts/ratchicons.ttf") format("truetype"), url("../fonts/ratchicons.svg#svgFontName") format("svg");
+  /*src: url("../fonts/ratchicons.eot");
+  src: url("../fonts/ratchicons.eot?#iefix") format("embedded-opentype"), url("../fonts/ratchicons.woff") format("woff"), url("../fonts/ratchicons.ttf") format("truetype"), url("../fonts/ratchicons.svg#svgFontName") format("svg");*/
+  src: url("assets/ratchicons.eot");
+  src: url("assets/ratchicons.eot?#iefix") format("embedded-opentype"), url("assets/ratchicons.woff") format("woff"), url("assets/ratchicons.ttf") format("truetype"), url("assets/ratchicons.svg#svgFontName") format("svg");
 }
 .icon {
   display: inline-block;
