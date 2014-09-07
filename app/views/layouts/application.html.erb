@@ -1,7 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>QynQyn</title>
+  <%# Full Screen mode on when mobile app bookmark %>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+  <%# About apple-mobile-web-app-status-bar-style
+    @param content = default, black(opacity black), black-translucent(semi-translucent)
+    @source https://developer.apple.com/library/safari/documentation/AppleApplications/Reference/SafariHTMLRef/Articles/MetaTags.html
+  %>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <%# TODO: アイコンを設置 %>
+  <link rel="icon" sizes="192x192" href="icon.png">
+
+  <title>tinQ</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
