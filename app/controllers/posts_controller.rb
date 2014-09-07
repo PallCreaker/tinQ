@@ -22,18 +22,13 @@ class PostsController < ApplicationController
   def create
     Post.transaction do
       @post = Post.new(content: params[:post][:content], image: params[:post][:image], user_id: current_user.id)
-
       params[:post][:products_attributes].each do |pp|
         if pp[:goods_name].present? && pp[:brand_id] && pp[:child_category_id]
           @post.products.build(goods_name: pp[:goods_name], brand_id: pp[:brand_id], child_category_id: pp[:child_category_id], image: pp[:image])
         end
       end
-
-      if @post.save!
-        redirect_to @post, notice: 'Posted.'
-      else
-        render :new, alert: 'Post was failed.'
-      end
+      @post.save!
+      redirect_to @post, notice: 'Posted.'
     end
   rescue
     redirect_to new_post_path, alert:'Post was failed.'
