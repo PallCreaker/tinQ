@@ -34,7 +34,9 @@ namespace :unicorn do
   end
 
   desc "confirm process"
-  task ("confirm") { "ps -ef | grep unicorn | grep -v grep" }
+  task ("confirm") do
+    sh  "ps -ef | grep unicorn | grep -v grep"
+  end
 
   ##
   ## Helpers

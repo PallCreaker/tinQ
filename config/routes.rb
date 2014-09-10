@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root :to => 'posts#index'
   resources :child_categories
 
   resources :brands
@@ -15,7 +16,7 @@ Rails.application.routes.draw do
 
   get '/users' => "users#index", as: :user
   get "/user/:name" => "users#show"#, as: :user
-  root 'users#index'
+  #root 'users#index'
 
   devise_for :users, controllers: {
     sessions:      "users/sessions",
