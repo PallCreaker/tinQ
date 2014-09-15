@@ -37,9 +37,10 @@ FactoryGirl.define do
     sequence(:name) { |n| "資生堂_#{n}" }
   end
 
-  factory :comment do
-    content Faker::Lorem.sentence
-    user
-    post
+  # factory :comment do
+  #   content Faker::Lorem.sentence
+    # user
+    # post
+  # end
 end
 

@@ -29,6 +29,9 @@
 </div>
 
 <% @post.comments.each do |comment| %>
-<hr>
-<a><%= comment.content %></a>
+  <hr>
+  <p><%= comment.content %></p>
+  <% if comment.user_id > 0 %>
+    <a href="/user/<%= comment.user.name %>">ユーザー<%#= comment.user.nickname %></a>
+  <% end %>
 <% end %>
