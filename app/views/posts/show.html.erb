@@ -2,23 +2,26 @@
 
 <p>
   <strong>Content:</strong>
-
-  <%= @post.content %>
+  <br>
+  <%= @post.content %><br>
   <%= image_tag @post.image_url.to_s %>
 </p>
 <p>
-    <% @post.products.each do |product| %>
-      <%= product.goods_name %>
-      <%= image_tag product.image_url.to_s %>
-    <% end %>
-</p>
-<p>
-  <%= @brand.name%>
-</p>
-<p>
-  <%= @category.name%>
+  <% @post.products.each do |product| %>
+    <%= product.goods_name %><br>
+    <%= product.brand.name %><br>
+    <%= product.child_category.name %><br>
+    <%= image_tag product.image_url.to_s %>
+  <% end %>
 </p>
 
+<%= form_for @comment, url: { action: 'comment' } do |f| %>
+  <%= f.label :content %>
+  <%= f.text_area :content %>
+  <%= f.submit 'コメントする' %>
+<% end %>
 
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+<% @post.comments.each do |comment| %>
+<hr>
+<a><%= comment.content %></a>
+<% end %>

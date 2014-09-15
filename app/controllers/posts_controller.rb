@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_post, only: [:show, :edit, :update, :destroy, :comment]
   before_action :set_product, only: [:new, :edit]
 
   def index
@@ -7,8 +7,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    @brand = Brand.find(params[:id])
-    @category = ChildCategory.find(params[:id])
+    @comment = Comment.new
   end
 
   def new
@@ -49,6 +48,12 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
     redirect_to posts_url, notice: 'Post was destroyed.'
+  end
+
+  def comment
+    # binding.pry
+    @post.comments.create(content: params[:comment][:content], user_id: current_user.id)
+    redirect_to post_url(id: @post.id)
   end
 
   private
