@@ -15,11 +15,18 @@
   <% end %>
 </p>
 
+<div style="border: 1px; background-color: #ddd">
 <%= form_for @comment, url: { action: 'comment' } do |f| %>
-  <%= f.label :content %>
+  <% if user_signed_in? %>
+    <%= image_tag current_user.icon.to_s %>
+  <% else %>
+    <a href="<%= new_user_session_path %>">ログイン(ログインしなくてもコメントできます)</a>
+  <% end %>
+
   <%= f.text_area :content %>
   <%= f.submit 'コメントする' %>
 <% end %>
+</div>
 
 <% @post.comments.each do |comment| %>
 <hr>

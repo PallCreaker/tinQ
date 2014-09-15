@@ -51,8 +51,11 @@ class PostsController < ApplicationController
   end
 
   def comment
-    # binding.pry
-    @post.comments.create(content: params[:comment][:content], user_id: current_user.id)
+    if user_signed_in?
+      @post.comments.create(content: params[:comment][:content], user_id: current_user.id)
+    else
+      @post.comments.create(content: params[:comment][:content])
+    end
     redirect_to post_url(id: @post.id)
   end
 
