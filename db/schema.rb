@@ -28,9 +28,9 @@ ActiveRecord::Schema.define(version: 20140915073739) do
   end
 
   create_table "comments", force: true do |t|
-    t.string   "content",                null: false
-    t.integer  "user_id",    default: 0, null: false
-    t.integer  "post_id",                null: false
+    t.string   "content",    null: false
+    t.integer  "user_id",    null: false
+    t.integer  "post_id",    null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
