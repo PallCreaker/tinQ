@@ -3,6 +3,7 @@ class Post < ActiveRecord::Base
   has_one :qynqyn
   has_many :post_products
   has_many :products, through: :post_products
+  has_many :comments
 
   default_scope { where('is_deleted != 1')}
   scope :latest, -> { order('update_at desc') }
