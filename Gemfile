@@ -44,6 +44,7 @@ gem 'nested_form'
 group :test, :development do
   gem 'rspec-rails'
   gem 'guard-rspec'
+  gem 'faker'
 end
 
 group :development do

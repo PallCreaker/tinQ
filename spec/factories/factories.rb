@@ -9,6 +9,12 @@ FactoryGirl.define do
   #   sequence(:name) { |n| "清水-#{n}さん" }
   # end
 
+  # factory :user do
+  #   email    Faker::Internet.safe_email
+  #   password Faker::Internet.password
+  #   name     Faker::Name.name
+  # end
+
   # factory :post do
   #   category
   #   product
@@ -30,5 +36,11 @@ FactoryGirl.define do
   factory :brand do
     sequence(:name) { |n| "資生堂_#{n}" }
   end
+
+  # factory :comment do
+  #   content Faker::Lorem.sentence
+    # user
+    # post
+  # end
 end
 

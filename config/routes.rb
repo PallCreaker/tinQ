@@ -10,7 +10,11 @@ Rails.application.routes.draw do
 
   resources :parent_categories
 
-  resources :posts
+  resources :posts do
+    member do
+      post 'comment'
+    end
+  end
 
   resources :product_images
 
@@ -22,7 +26,7 @@ Rails.application.routes.draw do
     sessions:      "users/sessions",
     registrations: "users/registrations",
     passwords:     "users/passwords",
-    omniauth_callbacks: "users/omniauth_callbacks" 
+    omniauth_callbacks: "users/omniauth_callbacks"
   }
 
   #match "/auth/:provider/callback" => "sessions#callback"
