@@ -34,3 +34,6 @@ config/s3.yml
 
 #とりあえずの画像保存先
 /public/uploads
+
+# package folder
+/vendor/assets/bower_components/*

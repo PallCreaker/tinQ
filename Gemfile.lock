@@ -33,6 +33,7 @@ GEM
       json (~> 1.4)
       nokogiri (>= 1.4.4)
     bcrypt (3.1.7)
+    bower-rails (0.8.3)
     buftok (0.2.0)
     builder (3.2.2)
     carrierwave (0.10.0)
@@ -66,6 +67,8 @@ GEM
     factory_girl_rails (4.4.1)
       factory_girl (~> 4.4.0)
       railties (>= 3.0.0)
+    faker (1.4.3)
+      i18n (~> 0.5)
     faraday (0.9.0)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.3)
@@ -301,10 +304,12 @@ PLATFORMS
 
 DEPENDENCIES
   aws-sdk (~> 1.46.0)
+  bower-rails (~> 0.8.3)
   carrierwave
   coffee-rails (~> 4.0.0)
   devise (~> 3.2.4)
   factory_girl_rails
+  faker
   fog
   guard-rspec
   jbuilder (~> 2.0)
