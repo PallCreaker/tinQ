@@ -31,6 +31,7 @@ git@github.com:PallCreaker/QynQyn.git
 cp config/database.yml.sample config/database.yml
 vim config/database.yml # 環境に合わせて修正
 bundle install --path vendor/bundle
+bundle exec rake bower:install #ratchetをbowerでインストール
 rake db:create # bundle exec rake db:create でも。
 # おかしかったら、rake db:migrate:reset
 rake db:migrate
