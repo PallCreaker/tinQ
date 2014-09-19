@@ -41,6 +41,9 @@ gem 'twitter'
 gem 'devise', '~> 3.2.4'
 gem 'nested_form'
 
+# a package manager for the web
+gem 'bower-rails', '~> 0.8.3'
+
 group :test, :development do
   gem 'rspec-rails'
   gem 'guard-rspec'
